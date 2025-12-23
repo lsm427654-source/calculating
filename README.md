@@ -1,6 +1,12 @@
 # 🧮 Scientific Calculator Web App
 
+[![Deploy to GitHub Pages](https://github.com/lsm427654-source/calculating/actions/workflows/deploy.yml/badge.svg)](https://github.com/lsm427654-source/calculating/actions/workflows/deploy.yml)
+
 > 현대적이고 직관적인 UI/UX를 갖춘 웹 기반 공학용 계산기
+
+## 🌐 Live Demo
+
+**배포된 사이트**: [https://lsm427654-source.github.io/calculating/](https://lsm427654-source.github.io/calculating/)
 
 ![Calculator Preview](./screen.png)
 
@@ -43,11 +49,16 @@
 
 ```
 calculating/
-├── PRD.md              # 제품 요구사항 명세서
-├── README.md           # 프로젝트 소개
-├── code.html           # 메인 HTML 파일
-├── screen.png          # 디자인 프리뷰
-└── .git/               # Git 저장소
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # GitHub Actions 배포 워크플로우
+├── PRD.md                  # 제품 요구사항 명세서
+├── TECH_SPEC.md            # 기술 명세서
+├── DEPLOYMENT.md           # 배포 가이드
+├── README.md               # 프로젝트 소개
+├── code.html               # 메인 HTML 파일
+├── screen.png              # 디자인 프리뷰
+└── .git/                   # Git 저장소
 ```
 
 ## 🚀 시작하기
@@ -88,6 +99,17 @@ http://localhost:8000
   - 기술 사양
   - UI/UX 가이드라인
   - 개발 로드맵
+
+- **[TECH_SPEC.md](./TECH_SPEC.md)** - 기술 명세서
+  - 아키텍처 설계
+  - 구현 가이드
+  - 알고리즘 설명
+  - 코드 예시
+
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - 배포 가이드
+  - GitHub Actions 설정
+  - GitHub Pages 배포
+  - 문제 해결
 
 ## 🗺️ 개발 로드맵
 
