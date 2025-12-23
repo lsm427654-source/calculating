@@ -169,7 +169,6 @@ function handleButtonClick(e) {
         handleModeToggle();
     }
 }
-}
 
 /**
  * Handle number input
