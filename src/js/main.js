@@ -35,130 +35,140 @@ function initializeElements() {
  * Attach event listeners to buttons
  */
 function attachEventListeners() {
-    // Use event delegation for all buttons
-    document.addEventListener('click', (e) => {
-        const button = e.target.closest('button');
-        if (!button) return;
+    // Remove existing listener if any (prevent duplicates)
+    document.removeEventListener('click', handleButtonClick);
 
-        const text = button.textContent.trim();
-
-        // Numbers
-        if (/^[0-9]$/.test(text)) {
-            handleNumber(text);
-        }
-        // Decimal point
-        else if (text === '.') {
-            handleNumber('.');
-        }
-        // Basic operators
-        else if (text === '+') {
-            handleOperator('+');
-        }
-        else if (text === '-') {
-            handleOperator('-');
-        }
-        else if (text === '×' || text === '*') {
-            handleOperator('*');
-        }
-        else if (text === '÷' || text === '/') {
-            handleOperator('/');
-        }
-        // Parentheses
-        else if (text === '(') {
-            handleOperator('(');
-        }
-        else if (text === ')') {
-            handleOperator(')');
-        }
-        // Functions
-        else if (text === 'sin') {
-            handleFunction('sin');
-        }
-        else if (text === 'cos') {
-            handleFunction('cos');
-        }
-        else if (text === 'tan') {
-            handleFunction('tan');
-        }
-        else if (text.includes('sin⁻¹')) {
-            handleFunction('asin');
-        }
-        else if (text.includes('cos⁻¹')) {
-            handleFunction('acos');
-        }
-        else if (text.includes('tan⁻¹')) {
-            handleFunction('atan');
-        }
-        else if (text === 'sinh') {
-            handleFunction('sinh');
-        }
-        else if (text === 'cosh') {
-            handleFunction('cosh');
-        }
-        else if (text === 'tanh') {
-            handleFunction('tanh');
-        }
-        else if (text === 'log') {
-            handleFunction('log');
-        }
-        else if (text === 'ln') {
-            handleFunction('ln');
-        }
-        else if (text === 'exp') {
-            handleFunction('exp');
-        }
-        else if (text === '√x') {
-            handleFunction('sqrt');
-        }
-        else if (text === '|x|') {
-            handleFunction('abs');
-        }
-        else if (text === 'x²') {
-            handleFunction('square');
-        }
-        else if (text === 'xʸ' || text === 'x^y') {
-            handleOperator('^');
-        }
-        else if (text === '10ˣ') {
-            handleFunction('pow10');
-        }
-        else if (text === '1/x') {
-            handleFunction('reciprocal');
-        }
-        else if (text === 'n!') {
-            handleFunction('factorial');
-        }
-        else if (text === 'mod') {
-            handleOperator('mod');
-        }
-        // Constants
-        else if (text === 'π') {
-            handleConstant('π');
-        }
-        else if (text === 'e') {
-            handleConstant('e');
-        }
-        // Special buttons
-        else if (text === '=' || text === 'Enter') {
-            handleEquals();
-        }
-        else if (text === 'C' || text === 'Clear') {
-            handleClear();
-        }
-        else if (text.includes('backspace') || text === '⌫') {
-            handleBackspace();
-        }
-        else if (text === '+/-') {
-            handleNegate();
-        }
-        // Mode toggle
-        else if (text === 'DEG' || text === 'RAD') {
-            handleModeToggle();
-        }
-    });
+    // Use event delegation for all buttons with named function
+    document.addEventListener('click', handleButtonClick);
 
     // Keyboard support
+    document.removeEventListener('keydown', handleKeyboard);
     document.addEventListener('keydown', handleKeyboard);
+}
+
+/**
+ * Handle button clicks (named function for event delegation)
+ */
+function handleButtonClick(e) {
+    const button = e.target.closest('button');
+    if (!button) return;
+
+    const text = button.textContent.trim();
+
+    // Numbers
+    if (/^[0-9]$/.test(text)) {
+        handleNumber(text);
+    }
+    // Decimal point
+    else if (text === '.') {
+        handleNumber('.');
+    }
+    // Basic operators
+    else if (text === '+') {
+        handleOperator('+');
+    }
+    else if (text === '-') {
+        handleOperator('-');
+    }
+    else if (text === '×' || text === '*') {
+        handleOperator('*');
+    }
+    else if (text === '÷' || text === '/') {
+        handleOperator('/');
+    }
+    // Parentheses
+    else if (text === '(') {
+        handleOperator('(');
+    }
+    else if (text === ')') {
+        handleOperator(')');
+    }
+    // Functions
+    else if (text === 'sin') {
+        handleFunction('sin');
+    }
+    else if (text === 'cos') {
+        handleFunction('cos');
+    }
+    else if (text === 'tan') {
+        handleFunction('tan');
+    }
+    else if (text.includes('sin⁻¹')) {
+        handleFunction('asin');
+    }
+    else if (text.includes('cos⁻¹')) {
+        handleFunction('acos');
+    }
+    else if (text.includes('tan⁻¹')) {
+        handleFunction('atan');
+    }
+    else if (text === 'sinh') {
+        handleFunction('sinh');
+    }
+    else if (text === 'cosh') {
+        handleFunction('cosh');
+    }
+    else if (text === 'tanh') {
+        handleFunction('tanh');
+    }
+    else if (text === 'log') {
+        handleFunction('log');
+    }
+    else if (text === 'ln') {
+        handleFunction('ln');
+    }
+    else if (text === 'exp') {
+        handleFunction('exp');
+    }
+    else if (text === '√x') {
+        handleFunction('sqrt');
+    }
+    else if (text === '|x|') {
+        handleFunction('abs');
+    }
+    else if (text === 'x²') {
+        handleFunction('square');
+    }
+    else if (text === 'xʸ' || text === 'x^y') {
+        handleOperator('^');
+    }
+    else if (text === '10ˣ') {
+        handleFunction('pow10');
+    }
+    else if (text === '1/x') {
+        handleFunction('reciprocal');
+    }
+    else if (text === 'n!') {
+        handleFunction('factorial');
+    }
+    else if (text === 'mod') {
+        handleOperator('mod');
+    }
+    // Constants
+    else if (text === 'π') {
+        handleConstant('π');
+    }
+    else if (text === 'e') {
+        handleConstant('e');
+    }
+    // Special buttons
+    else if (text === '=' || text === 'Enter') {
+        handleEquals();
+    }
+    else if (text === 'C' || text === 'Clear') {
+        handleClear();
+    }
+    else if (text.includes('backspace') || text === '⌫') {
+        handleBackspace();
+    }
+    else if (text === '+/-') {
+        handleNegate();
+    }
+    // Mode toggle
+    else if (text === 'DEG' || text === 'RAD') {
+        handleModeToggle();
+    }
+}
 }
 
 /**
