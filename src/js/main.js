@@ -35,16 +35,6 @@ function initializeElements() {
  * Attach event listeners to buttons
  */
 function attachEventListeners() {
-    // Number buttons (0-9)
-    for (let i = 0; i <= 9; i++) {
-        const buttons = document.querySelectorAll(`button:not([data-action])`);
-        buttons.forEach(btn => {
-            if (btn.textContent.trim() === i.toString()) {
-                btn.addEventListener('click', () => handleNumber(i.toString()));
-            }
-        });
-    }
-
     // Use event delegation for all buttons
     document.addEventListener('click', (e) => {
         const button = e.target.closest('button');
