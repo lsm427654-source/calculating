@@ -8,7 +8,7 @@
 
 **배포된 사이트**: [https://lsm427654-source.github.io/calculating/](https://lsm427654-source.github.io/calculating/)
 
-![Calculator Preview](./screen.png)
+![Calculator Preview](./design/screen.png)
 
 ## 📋 프로젝트 개요
 
@@ -51,14 +51,19 @@
 calculating/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml      # GitHub Actions 배포 워크플로우
-├── PRD.md                  # 제품 요구사항 명세서
-├── TECH_SPEC.md            # 기술 명세서
-├── DEPLOYMENT.md           # 배포 가이드
-├── README.md               # 프로젝트 소개
-├── code.html               # 메인 HTML 파일
-├── screen.png              # 디자인 프리뷰
-└── .git/                   # Git 저장소
+│       └── deploy.yml          # GitHub Actions 배포 워크플로우
+├── src/
+│   ├── index.html              # 메인 HTML 파일
+│   ├── js/                     # JavaScript 파일
+│   ├── css/                    # CSS 파일
+│   └── assets/                 # 이미지, 폰트 등
+├── design/
+│   └── screen.png              # 디자인 프리뷰
+├── PRD.md                      # 제품 요구사항 명세서
+├── TECH_SPEC.md                # 기술 명세서
+├── DEPLOYMENT.md               # 배포 가이드
+├── README.md                   # 프로젝트 소개
+└── .git/                       # Git 저장소
 ```
 
 ## 🚀 시작하기
@@ -73,9 +78,9 @@ cd calculating
 
 2. 브라우저에서 열기
 ```bash
-# 단순히 code.html 파일을 브라우저에서 열기
-start code.html  # Windows
-open code.html   # macOS
+# 단순히 index.html 파일을 브라우저에서 열기
+start src/index.html  # Windows
+open src/index.html   # macOS
 ```
 
 또는 로컬 서버 실행:
@@ -84,7 +89,7 @@ open code.html   # macOS
 python -m http.server 8000
 
 # Node.js (http-server)
-npx http-server
+npx http-server src
 ```
 
 3. 브라우저에서 접속
